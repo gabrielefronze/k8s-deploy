@@ -21,6 +21,7 @@ echo "Deploying flannel network"
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
 echo "Deploying dashboard"
+curl https://raw.githubusercontent.com/kubernetes/dashboard/latest/aio/deploy/recommended.yaml > recommended.yaml
 kubectl apply -f recommended.yaml
 kubectl apply -f dashboard-adminuser.yaml
 kubectl -n kubernetes-dashboard describe secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}')
