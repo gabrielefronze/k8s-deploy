@@ -41,6 +41,15 @@ kubeadm init --control-plane-endpoint=$HOST_IP --pod-network-cidr=10.244.0.0/16 
 
 echo ""
 echo "###########################################################################"
+echo "Setting up home configuration"
+echo "###########################################################################"
+echo ""
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+echo ""
+echo "###########################################################################"
 echo "Deploying Flannel network layer"
 echo "###########################################################################"
 echo ""
