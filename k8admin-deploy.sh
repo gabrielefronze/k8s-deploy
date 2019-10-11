@@ -62,3 +62,23 @@ echo "Allowing control node scheduling"
 echo "###########################################################################"
 echo ""
 kubectl taint nodes --all node-role.kubernetes.io/master-
+
+echo ""
+echo "###########################################################################"
+echo "Running k8s Dashboard"
+echo "###########################################################################"
+echo ""
+kubectl apply -f recommended-dashboard.yaml
+kubectl apply -f adminuser-dashboard.yaml
+
+echo ""
+echo "###########################################################################"
+echo "Retrieving remote connection token"
+echo ""
+yum install -y jq
+DASHBOARD_TOKEN = $(kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get secret | grep admin-user | awk '{print $1}') -o json | jq -r '.data["token"]' | base64 -d)
+echo "Connection token:"
+echo $DASHBOARD_TOKEN
+unset DASHBOARD_TOKEN
+echo "###########################################################################"
+echo ""
