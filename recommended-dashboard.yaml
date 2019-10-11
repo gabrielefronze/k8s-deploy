@@ -46,7 +46,7 @@ spec:
   - nodePort: 30737
     port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 9090
     name: http
   type: NodePort
   selector:
@@ -202,7 +202,7 @@ spec:
           ports:
             - containerPort: 8443
               protocol: TCP
-            - containerPort: 8080
+            - containerPort: 9090
               protocol: TCP
           args:
             - --auto-generate-certificates
