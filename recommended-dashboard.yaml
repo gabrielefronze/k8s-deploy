@@ -207,7 +207,7 @@ spec:
           args:
             # - --auto-generate-certificates
             - --enable-insecure-login
-            - --enable-skip-login
+            # - --enable-skip-login
             - --namespace=kubernetes-dashboard
             # Uncomment the following line to manually specify Kubernetes API server Host
             # If not specified, Dashboard will attempt to auto discover the API server and connect
